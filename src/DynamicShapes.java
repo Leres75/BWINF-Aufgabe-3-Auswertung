@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -15,18 +14,17 @@ public class DynamicShapes extends JPanel {
 	private List<Object> shapes = new ArrayList<>();
 	private static final long serialVersionUID = 1L;
 	public DynamicShapes(ArrayList<Integer> numbers, int[] markers) {
-		this.removeAll();
+		shapes.add(new Background(1000, 40));
+		repaint();
 		redraw(numbers, markers);
     }
 	public void redraw(ArrayList<Integer> numbers, int[] markers){
         setBackground(Color.BLACK);
-        Random rnd = new Random();
         for (Integer number : numbers) {
-        	int y = rnd.nextInt(5);
-			addNumber(number/2, y);
+			addNumber(number-1, 0);
 		}
         for (int marker : markers) {
-			addMarker(marker/2, 5);
+			addMarker(marker-2, 5);
 		}
         setPreferredSize(new Dimension(500, 50));
 		
@@ -40,6 +38,8 @@ public class DynamicShapes extends JPanel {
                 ((Marker) s).draw(g);
             } else if (s instanceof Number) {
                 ((Number) s).draw(g);
+            }else if (s instanceof Background) {
+            	((Background) s).draw(g);
             }
         }
     }

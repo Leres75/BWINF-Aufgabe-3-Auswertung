@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public class Number {
-	int x, y, width, height = 4;
+	int x, y, width, height = 35;
 
     public Number(int x, int y) {
         this.x = x;
@@ -31,9 +31,9 @@ public class Number {
 	}
 	public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        Rectangle2D.Double number = new Rectangle2D.Double(x, y, 1, height);
+        Rectangle2D.Double number = new Rectangle2D.Double(x, y, 3, height);
 
-        g2d.setColor(Color.RED);
+        g2d.setColor(new Color(255, 50, 50, 150));
         g2d.fill(number);
     }
 }
