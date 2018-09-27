@@ -14,6 +14,7 @@ public class DynamicShapes extends JPanel {
 	private List<Object> shapes = new ArrayList<>();
 	private static final long serialVersionUID = 1L;
 	public DynamicShapes(ArrayList<Integer> numbers, int[] markers) {
+		shapes.clear();
 		shapes.add(new Background(1000, 40));
 		repaint();
 		redraw(numbers, markers);
